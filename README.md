@@ -1,15 +1,39 @@
-create table showdetails (
-showId varchar(5) primary key,
-showName varchar(30) unique,
-location varchar(20),
-showdate date,
-avSeats number(3),
-priceticket number(5,2)
-);
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Book Show </title>
+</head>
+<body>
+	<h1> List of Magic Show</h1>
+<br/>
 
-
-insert into showdetails values('S102','Quantico','Big Cinmas','23-Aug-2016',25,250);
-insert into showdetails values('S103','Lod of Rings','PVR','23-Jul-2016',0,350);
-insert into showdetails values('S104','Magic Show','Victory Hall','23-Nov-2016',38,375);
-insert into showdetails values('S105','Vampire Series','Chestnut Drive','13-Nov-2016',50,475);
-
+<table border="3">
+	<tr>
+	<th>ShowName</th>
+	<th>Location</th>
+	<th>Date</th>
+	<th>Price</th>
+	<th>Available Seats</th>
+	<th>Book</th>
+	</tr>
+<c:forEach items="${alShow}" var="sb">
+	
+	<tr>
+		<td><c:out value="${sb.getShowName()}"></c:out></td>
+		<td><c:out value="${sb.getLocation()}"></c:out></td>
+		<td><c:out value="${sb.getShowDate()}"></c:out></td>
+		<td><c:out value="${sb.getPriceTicket()}"></c:out></td>
+		<td><c:out value="${sb.getAvSeats()}"></c:out></td>
+		<td></td>
+	</tr>
+</c:forEach>
+</table>
+	
+</body>
+</html>
